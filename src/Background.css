@@ -1,0 +1,5 @@
+div.Background{
+    background: linear-gradient(to right, rgb(203, 52, 181), rgb(58,62, 197));
+    height: 100vh;
+    margin-bottom: -100vh;
+}
