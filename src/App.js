@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageInput from './MessageInput';
+import Background from './Background'
 
 import './App.css';
 
@@ -16,6 +17,7 @@ export default class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <Background />
         <header className="App-header">
           <h1>Talk Thanos To Me</h1>
           <h4>Text 1-718-400-6004 to speak to Thanos</h4>
