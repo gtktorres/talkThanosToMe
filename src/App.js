@@ -13,9 +13,15 @@ export default class App extends React.Component {
     super();
     this.state = {
       name: "Alfonso",
-      food: ["pasta", "pizza", "potatoes"]
+      food: ["pasta", "pizza", "potatoes"],
+      url: "https://media.giphy.com/media/2WGYAQZ52I6wQecREk/giphy.gif"
     };
   }
+
+callbackFunction = (childData) => {
+  console.log(this.state.url);
+  this.setState({url: childData})
+}
 
   render() {
     return (
@@ -25,9 +31,9 @@ export default class App extends React.Component {
           <h1>Talk to Thanos!</h1>
           <h3>Text  718-400-6004 to speak to Thanos</h3>
           <br/>
-          <img src={thanos} className="App-logo" alt="logo" />
+          <img src={this.state.url} className="App-logo" alt="logo" />
           <br />
-          <Messages />
+          <Messages parentCallback = {this.callbackFunction}/>
         </div>
       </div>
     );

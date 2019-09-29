@@ -8,7 +8,7 @@ class Messages extends Component {
     this.state = {
       messages: [],
       userMessage: "",
-      thanosMessage: ""
+      thanosMessage: "",
     };
   }
   //   handleSubmitMessage = e => {
@@ -50,11 +50,16 @@ class Messages extends Component {
     const thanosMessage = "";
     this.setState({ messages, userMessage, thanosMessage });
     this.scrollToBottom();
+    const offset = Math.floor(Math.random() * 20)
+    axios.get(`https://api.giphy.com/v1/gifs/search?api_key=bIm4cpsythNmsTnIjGo9XNsxwmWlWMh8&q=thanos&limit=25&offset=0&rating=G&lang=en`).then(res => {
+      const url = res.data.data[offset].images.original.url
+      this.props.parentCallback(url);
+    })
   };
 
   render() {
     return (
-      <div>
+      <div className="messagingContainer">
         <div className="messagesContainer">
           {this.state.messages.map(message => (
             <div className={message.sender}>{message.text}</div>

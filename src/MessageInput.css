@@ -1,5 +1,5 @@
 input {
-  width: 80vh;
+  width: 80%;
   padding: 6px 10px;
   margin: 10px 0;
   box-sizing: border-box;
@@ -43,4 +43,8 @@ button {
 .messagesContainer {
   height: 25vh;
   overflow: scroll;
+}
+
+.messagingContainer{
+  width: 100%;
 }

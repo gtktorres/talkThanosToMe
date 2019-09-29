@@ -19,6 +19,11 @@
   color: white;
 }
 
+img{
+  max-width: 100%;
+  height: auto;
+}
+
 .App-link {
   color: #09d3ac;
 }

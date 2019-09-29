@@ -30,5 +30,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Talk to him, it is inevitable...",
+  "main": "button.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GueTorres/talkThanosToMe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GueTorres/talkThanosToMe/issues"
+  },
+  "homepage": "https://github.com/GueTorres/talkThanosToMe#readme"
 }
