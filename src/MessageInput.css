@@ -1,15 +1,46 @@
-input{
-    width: 100%;
-    padding: 6px 10px;
-    margin: 10px 0;
-    box-sizing: border-box;
-    border: 2px solid #99abce;
-    border-radius: 10px;
-    background-color: #424957;
-    font-size: 20px;
-    color: #b8ecc3;
+input {
+  width: 80vh;
+  padding: 6px 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 2px solid #99abce;
+  border-radius: 10px;
+  background-color: #424957;
+  font-size: 14px;
+  color: #b8ecc3;
 }
 
 input:focus {
-    outline-width: 0px;
+  outline-width: 0px;
+}
+
+button {
+  background-color: #4caf50; /* Green */
+  margin-top: 4px;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+}
+
+.thanos {
+  background-color: #aa47b3;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 25px;
+  margin: 10px;
+}
+.user {
+  background-color: #327be7;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  margin: 10px;
+}
+.messagesContainer {
+  height: 25vh;
+  overflow: scroll;
 }
