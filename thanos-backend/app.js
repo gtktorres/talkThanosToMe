@@ -5,11 +5,11 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const Line = require("./models/Lines");
-const Sentiment = require("sentiment")
+const Sentiment = require("sentiment");
 require("dotenv/config");
 
 //Middlewares
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -18,17 +18,34 @@ app.get("/", (req, res) => {
   res.send("Hello world, this is my thanos app");
 });
 
-app.post('/sms', (req, res) => {
-  let mirror = "It is inevitable...";
-  	 if(req.body.Body) {
-  	 	mirror = JSON.stringify(req.body.Body);
-  	 }
+app.post("/sms", (req, res) => {
+  // if (req.body.Body) {
+  //   mirror = JSON.stringify(req.body.Body);
+  // }
+  const mirror = JSON.stringify(req.body.Body);
 
+  var sentiment = new Sentiment();
+  var result = sentiment.analyze(mirror);
+
+  var value = result.comparative;
+  var string;
+
+  if (value < 0) {
+    string = "NEGATIVE";
+  } else if (value < 0.5) {
+    string = "NEUTRAL";
+  } else {
+    string = "POSITIVE";
+  }
+  console.log(string);
+  const line = Line.find({ sentiment: string });
+  const x = Math.floor(Math.random() * line.length + 1);
+  const thanosLine = line[x];
   const twiml = new MessagingResponse();
 
-  twiml.message(, ' -Thanos');
+  twiml.message(thanosLine, " -Thanos");
 
-  res.writeHead(200, {'Content-Type': 'text/xml'});
+  res.writeHead(200, { "Content-Type": "text/xml" });
   res.end(twiml.toString());
 });
 
@@ -63,15 +80,15 @@ app.post("/api/message", async (req, res) => {
   var value = result.comparative;
   var string;
 
-  if (value < 0){
-      string = "NEGATIVE";
-  } else if (value < 0.5){
-      string = "NEUTRAL";
+  if (value < 0) {
+    string = "NEGATIVE";
+  } else if (value < 0.5) {
+    string = "NEUTRAL";
   } else {
-      string = "POSITIVE";
+    string = "POSITIVE";
   }
-  console.log(string)
-  const line = await Line.find({sentiment:string});
+  console.log(string);
+  const line = await Line.find({ sentiment: string });
   const x = Math.floor(Math.random() * line.length + 1);
   thanosLine = line[x];
   res.json(thanosLine);
