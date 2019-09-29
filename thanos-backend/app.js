@@ -38,6 +38,15 @@ app.post("/api/insertData", async (req, res) => {
   }
 });
 
+app.get("/api/message", async (req, res) => {
+  // const message = req.body.message;
+  // console.log(message);
+  const line = await Line.find();
+  const x = Math.floor(Math.random() * 20 + 1);
+  thanosLine = line[x];
+  res.json(thanosLine);
+});
+
 mongoose.connect(
   process.env.DB_CONNECTION,
   { useNewUrlParser: true, useUnifiedTopology: true },
@@ -46,5 +55,7 @@ mongoose.connect(
   }
 );
 
-app.listen(3000);
-console.log("Listening on port 3000");
+const port = 4000;
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
