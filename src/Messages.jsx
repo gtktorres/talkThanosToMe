@@ -29,7 +29,9 @@ class Messages extends Component {
   };
 
   updateMessages = e => {
-    axios.get("http://localhost:4000/api/message").then(res => {
+    axios.post("http://localhost:4000/api/message", {
+      message: this.state.userMessage
+    }).then(res => {
       const thanosMessage = res.data.line;
       this.setState({ thanosMessage });
     });

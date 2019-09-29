@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const Line = require("./models/Lines");
+const Sentiment = require("sentiment")
 require("dotenv/config");
 
 //Middlewares
@@ -38,11 +39,25 @@ app.post("/api/insertData", async (req, res) => {
   }
 });
 
-app.get("/api/message", async (req, res) => {
+app.post("/api/message", async (req, res) => {
   // const message = req.body.message;
   // console.log(message);
-  const line = await Line.find();
-  const x = Math.floor(Math.random() * 20 + 1);
+  var sentiment = new Sentiment();
+  var result = sentiment.analyze(req.body.message);
+
+  var value = result.comparative;
+  var string;
+
+  if (value < 0){
+      string = "NEGATIVE";
+  } else if (value < 0.5){
+      string = "NEUTRAL";
+  } else {
+      string = "POSITIVE";
+  }
+  console.log(string)
+  const line = await Line.find({sentiment:string});
+  const x = Math.floor(Math.random() * line.length + 1);
   thanosLine = line[x];
   res.json(thanosLine);
 });
