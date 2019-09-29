@@ -26,7 +26,7 @@ app.post('/sms', (req, res) => {
 
   const twiml = new MessagingResponse();
 
-  twiml.message(mirror);
+  twiml.message(, ' -Thanos');
 
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
