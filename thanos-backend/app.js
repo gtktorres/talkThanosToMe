@@ -9,12 +9,27 @@ const Sentiment = require("sentiment")
 require("dotenv/config");
 
 //Middlewares
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
 //Routes
 app.get("/", (req, res) => {
   res.send("Hello world, this is my thanos app");
+});
+
+app.post('/sms', (req, res) => {
+  let mirror = "It is inevitable...";
+  	 if(req.body.Body) {
+  	 	mirror = JSON.stringify(req.body.Body);
+  	 }
+
+  const twiml = new MessagingResponse();
+
+  twiml.message(mirror);
+
+  res.writeHead(200, {'Content-Type': 'text/xml'});
+  res.end(twiml.toString());
 });
 
 app.get("/api/getData", async (req, res) => {
