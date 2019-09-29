@@ -10,6 +10,7 @@ export default class MessageInput extends React.Component{
                 <div>
                     <img src={thanos} className="App-logo" alt="logo"/>
                 </div>
+                <h5>Or enter a message below</h5>
                 <input type="text" display-type="block" placeholder="Your Message"/>
             </div>
         )
