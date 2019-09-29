@@ -23,9 +23,10 @@ export default class App extends React.Component {
         <Background />
         <div className="App-header">
           <h1>Talk to Thanos!</h1>
-          <h4>Text 1-718-400-6004 to speak to Thanos</h4>
-          <br />
+          <h3>Text  718-400-6004 to speak to Thanos</h3>
+          <br/>
           <img src={thanos} className="App-logo" alt="logo" />
+          <br />
           <Messages />
         </div>
       </div>
